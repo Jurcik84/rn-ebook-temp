@@ -102,5 +102,10 @@ export const Title: React.FunctionComponent<BasicProps> = function ({
   contentContainerStyle = {},
   imageSrc = null,
 }) {
-  return <View style={{}}>{<VStack>{imageSrc ? null : null}</VStack>}</View>;
+  return <View style={{}}>
+      <VStack>
+          <View>{imageSrc ? null : null}</View>
+          <Text>{title}</Text>
+      </VStack>
+  </View>;
 };

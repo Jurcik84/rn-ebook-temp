@@ -8,6 +8,13 @@ const { width } = Dimensions.get("window");
 
 const numOfColumns = 3;
 
+// lent of array
+// 3 columns
+// 9 
+// 0 helpers
+
+
+
 const formatData = (data: Array<{}>, numColumns: number) => {
   const numOfFullRows = Math.floor(data.length / numColumns);
   // data.len = 10
