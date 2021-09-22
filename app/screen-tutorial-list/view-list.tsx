@@ -4,7 +4,7 @@ import ListItem from "./view-list-item";
 
 import SECTIONS from "./state-init";
 
-const NAVIGATION_NAVIGATE_TO = "HomDetailTutorial";
+const NAVIGATION_NAVIGATE_TO = "FullScreenModalView";
 
 export default function ViewListMultiRowSectionList({ navigation }) {
   return (

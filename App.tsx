@@ -1,17 +1,30 @@
 import "react-native-gesture-handler";
 import * as React from "react";
-import { View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import StackApp from "./app/app-screen-manager/container.nav";
+import StackApp from "./app/app-screen-manager";
+// ctx
+import { NavScreenContextProvider } from "./app/app-screen-manager/ctx-controller";
+
+import SomeView from "./AppLab/view";
 
 function App() {
   return (
-    <NavigationContainer>
-      <StackApp />
-    </NavigationContainer>
+    <View
+      style={{
+        flex: 1,
+      }}
+    >
+      <SomeView />
+    </View>
   );
 }
 
 export default App;
+
+// <NavScreenContextProvider>
+//   <NavigationContainer>
+//     <StackApp />
+//   </NavigationContainer>
+// </NavScreenContextProvider>
