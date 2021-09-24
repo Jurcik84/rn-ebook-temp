@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, StyleSheet, Text } from "react-native";
-
+import TextTeSpeachExample from '../../AppLab/view'
 // ui type - inject some view into modal :)
 // data type - user data + config data
 // action type - open modal , close modeal
@@ -54,16 +54,7 @@ const SomeUIWithDataExample = () => {
         flex: 1,
       }}
     >
-      <VStack>
-        <Text>VStack</Text>
-        <Text>VStack</Text>
-        <Text>VStack</Text>
-      </VStack>
-      <HStack>
-        <Text>VStack</Text>
-        <Text>VStack</Text>
-        <Text>VStack</Text>
-      </HStack>
+     <TextTeSpeachExample />
     </View>
   );
 };
@@ -73,7 +64,6 @@ const FullScreenModalView: React.FunctionComponent<FullScreenModalViewType> = (
 ) => {
   return (
     <View style={[styles.container]}>
-      <Text>Hello Modal</Text>
       <SomeUIWithDataExample />
     </View>
   );

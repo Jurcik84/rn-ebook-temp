@@ -90,7 +90,7 @@ const TabNavigation = ({}) => {
   );
 };
 
-const HomeListScreen = ({}) => {
+export default ({}) => {
   return (
     <Stack.Navigator>
       <Stack.Group>
@@ -129,5 +129,3 @@ const HomeListScreen = ({}) => {
     </Stack.Navigator>
   );
 };
-
-export default HomeListScreen;
