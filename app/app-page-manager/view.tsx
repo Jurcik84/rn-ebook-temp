@@ -5,11 +5,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 // import Screens
-import HomeTutorialList from "../screen-tutorial-list/view";
-import DetailTutorial from "../screen-tutorial-detail/view";
+import ListScreen from "../page-tutorial-list/view";
+import DetailScreen from "../page-tutorial-detail/view";
 
+// tab
+import ScreenFinishedTuts from "../page-finished-tuts/view";
 // modal
-import FullScreenModalView from "../screen-full-modal/view";
+import FullScreenModalView from "../page-full-modal/view";
 
 // ctx
 // import useScreenCtx from "./ctx-controller";
@@ -22,27 +24,24 @@ const Tab = createBottomTabNavigator();
 // name string
 // opton {}
 
-const tab_config = [
-  {
-    options: { headerShown: false },
-    comp: HomeTutorialList,
-    name: "Home",
-  },
-  {
-    options: { headerShown: true },
-    comp: SettingsScreen,
-    name: "Finished",
-  },
-  { options: { headerShown: true }, comp: SettingsScreen, name: "Dictionary" },
-];
+const HomePageConfig = {
+  options: { headerShown: false },
+  comp: ListScreen,
+  name: "Home",
+};
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+const FinishPageConfig = {
+  options: { headerShown: true },
+  comp: ScreenFinishedTuts,
+  name: "Finished",
+};
+
+const DictionaryConfig = {
+  options: { headerShown: true },
+  comp: ScreenFinishedTuts,
+  name: "Dictionary",
+};
+const tab_config = [HomePageConfig, FinishPageConfig, DictionaryConfig];
 
 const TabNavigation = ({}) => {
   // tested OK
@@ -51,7 +50,13 @@ const TabNavigation = ({}) => {
 
   return (
     <Tab.Navigator
+     
       screenOptions={({ route }) => ({
+        tabBarStyle: {
+          backgroundColor: "#000000",
+          paddingTop: 12,
+          borderTopColor: "#000000",
+        },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
@@ -72,8 +77,8 @@ const TabNavigation = ({}) => {
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "tomato",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: "#FFE232",
+        tabBarInactiveTintColor: "#FFE232",
       })}
     >
       {tab_config.map(({ comp, name, options }, tabConfigIndex) => {
@@ -100,7 +105,9 @@ export default ({}) => {
           component={TabNavigation}
         />
       </Stack.Group>
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
+      <Stack.Group 
+      
+      screenOptions={{ presentation: 'card' }}>
         <Stack.Screen
           options={{
             headerShown: true,
@@ -110,8 +117,8 @@ export default ({}) => {
             },
             // headerTintColor: "red",
           }}
-          name="HomDetailTutorial"
-          component={DetailTutorial}
+          name="DetailScreen"
+          component={DetailScreen}
         />
         <Stack.Screen
           options={{

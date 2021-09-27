@@ -6,7 +6,7 @@ import SECTIONS from "./state-init";
 
 const NAVIGATION_NAVIGATE_TO = "FullScreenModalView";
 
-export default function ViewListMultiRowSectionList({ navigation }) {
+export default function ListView({ navigation }) {
   return (
     <SectionList
       bounces={true} // not available on android
@@ -16,8 +16,18 @@ export default function ViewListMultiRowSectionList({ navigation }) {
       renderSectionHeader={({ section }) => (
         <>
           <Text style={styles.sectionHeader}>{section.title}</Text>
+          <Text
+            style={{
+              fontSize: 18,
+              marginBottom: 22,
+              color: 'gray'
+            }}
+          >
+           Some Longer Title to describe ...
+          </Text>
           {section.horizontal ? (
             <FlatList
+            
               horizontal
               data={section.data}
               renderItem={({ item }) => (

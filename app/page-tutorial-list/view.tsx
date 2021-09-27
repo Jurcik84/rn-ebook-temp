@@ -7,7 +7,7 @@ export default ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, paddingRight: 0 }}>
         <ViewListMultiRowSectionList navigation={navigation} />
       </SafeAreaView>
     </View>
@@ -17,7 +17,10 @@ export default ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#121212',
+    backgroundColor: '#000000',
+   paddingLeft: 16,
+   paddingRight: 0
+   
   },
   sectionHeader: {
     fontWeight: "800",
@@ -35,7 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   itemText: {
-    color: "#121212",
+    color: "#8F8F91",
     marginTop: 5,
   },
 });

@@ -1,8 +1,8 @@
 import "react-native-gesture-handler";
 import * as React from "react";
-import { Linking, Platform } from "react-native";
+import { Linking, Platform, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import StackApp from "./app/app-screen-manager";
+import StackApp from "./app/app-page-manager/view";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PERSISTENCE_KEY = "NAVIGATION_STATE";
