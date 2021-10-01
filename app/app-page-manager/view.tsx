@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
@@ -50,12 +49,11 @@ const TabNavigation = ({}) => {
 
   return (
     <Tab.Navigator
-     
       screenOptions={({ route }) => ({
         tabBarStyle: {
-          backgroundColor: "#000000",
+          // backgroundColor: "#000000",
           paddingTop: 12,
-          borderTopColor: "#000000",
+          // borderTopColor: "#000000",
         },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
@@ -77,8 +75,8 @@ const TabNavigation = ({}) => {
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "#FFE232",
-        tabBarInactiveTintColor: "#FFE232",
+        // tabBarActiveTintColor: "#FFE232",
+        // tabBarInactiveTintColor: "#FFE232",
       })}
     >
       {tab_config.map(({ comp, name, options }, tabConfigIndex) => {
@@ -97,7 +95,8 @@ const TabNavigation = ({}) => {
 
 export default ({}) => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+    }}>
       <Stack.Group>
         <Stack.Screen
           options={{ headerShown: false }}
@@ -105,9 +104,7 @@ export default ({}) => {
           component={TabNavigation}
         />
       </Stack.Group>
-      <Stack.Group 
-      
-      screenOptions={{ presentation: 'card' }}>
+      <Stack.Group screenOptions={{ presentation: "card" }}>
         <Stack.Screen
           options={{
             headerShown: true,

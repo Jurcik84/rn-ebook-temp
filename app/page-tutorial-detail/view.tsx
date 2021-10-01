@@ -1,20 +1,39 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
-import DetailPageContent from "./view-list";
+import DetailPageContent from "./view-karaoke";
+import AudioPlayerView from "./view-audio-player";
+import {ContextController} from './state'
+import { View ,Text } from "react-native";
 
-function TutorialScreen({ navigation }) {
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      tabBarVisible: false,
-      title: "Macka chce sukat",
-    });
-  }, [navigation]);
 
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <DetailPageContent />
-    </View>
-  );
+const KaraokeHeaderView = function(){
+  return <View style={{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 12
+  }}>
+    <Text>icon</Text>
+    <Text>a</Text>
+    <Text>a</Text>
+    <Text>a</Text>
+  </View>
 }
 
-export default TutorialScreen;
+const DetailPage = function ({}) {
+  return (
+    <ContextController>
+      <KaraokeHeaderView />
+      <DetailPageContent />
+      <AudioPlayerView />
+    </ContextController>
+  );
+};
+
+export default DetailPage;
+
+
+// React.useLayoutEffect(() => {
+//   navigation.setOptions({
+//     tabBarVisible: false,
+//     title: "",
+//   });
+// }, [navigation]);
