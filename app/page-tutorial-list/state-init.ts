@@ -1,7 +1,7 @@
 
 const SECTIONS = [
     {
-      title: "Made for you",
+      title: "Lekce",
       horizontal: true,
       data: [
         {

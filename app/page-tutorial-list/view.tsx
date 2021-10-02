@@ -1,15 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, View } from "react-native";
 import ViewListMultiRowSectionList from "./view-list";
 
 export default ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <StatusBar style="light" />
-      <SafeAreaView style={{ flex: 1, paddingRight: 0 }}>
-        <ViewListMultiRowSectionList navigation={navigation} />
-      </SafeAreaView>
+      <ViewListMultiRowSectionList navigation={navigation} />
     </View>
   );
 };
@@ -17,10 +13,9 @@ export default ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000000',
-   paddingLeft: 16,
-   paddingRight: 0
-   
+    // backgroundColor: '',
+    // paddingLeft: 16,
+    marginRight: 0,
   },
   sectionHeader: {
     fontWeight: "800",
@@ -42,3 +37,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 });
+
+//https://www.youtube.com/watch?v=CruJIdFwQWA&list=PLaAoUJDWH9Wqatfwa4SEfyFevrl8QefcN&index=25
+// https://www.youtube.com/watch?v=npe3Wf4tpSg

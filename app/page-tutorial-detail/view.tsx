@@ -1,20 +1,22 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
-import DetailPageContent from "./view-list";
+import DetailPageContent from "./view-karaoke";
+import AudioPlayerView from "./view-audio-player";
+import {ContextController} from './state'
 
-function TutorialScreen({ navigation }) {
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      tabBarVisible: false,
-      title: "Macka chce sukat",
-    });
-  }, [navigation]);
-
+const DetailPage = function ({}) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <ContextController>
       <DetailPageContent />
-    </View>
+      <AudioPlayerView />
+    </ContextController>
   );
-}
+};
 
-export default TutorialScreen;
+export default DetailPage;
+
+// React.useLayoutEffect(() => {
+//   navigation.setOptions({
+//     tabBarVisible: false,
+//     title: "",
+//   });
+// }, [navigation]);

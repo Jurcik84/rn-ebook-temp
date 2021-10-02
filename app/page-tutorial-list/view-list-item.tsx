@@ -40,13 +40,14 @@ const ListItem = ({
       <TouchableWithoutFeedback onPress={scaleDowWhenPressed}>
         <View
           style={{
-            width: 193,
-            height: 205,
+            width: 148,
+            height: 216,
             marginRight: 12,
             borderRadius: 12,
-            backgroundColor: item?.style_bgColor
-              ? item?.style_bgColor
-              : "#AE455C",
+            borderColor: '#ccc',
+           borderWidth: 1,
+           marginBottom: 35
+          
           }}
         >
           <View
@@ -55,7 +56,7 @@ const ListItem = ({
               paddingTop: 10,
               // flex: 4,
               // backgroundColor: 'red'
-               flex: 1,
+              flex: 1,
             }}
           >
             <Text
@@ -66,31 +67,13 @@ const ListItem = ({
                   marginBottom: 12,
                 },
               ]}
-              h6
+              h7
             >
               Home
             </Text>
-            <Text style={[styles.itemText]} p>
-              Learn what programming is and how to think
-            </Text>
+            <Text style={[styles.itemText]} p></Text>
           </View>
-          {/* <View
-            style={{
-              flex:1,
-              // backgroundColor: 'pink',
-          
-              marginRight: 12,
-              justifyContent: 'center',
-              alignItems: 'flex-end'
-            }}
-          >
-            <Text style={{
-              width: 40,
-              height: 40,
-              borderRadius: 6,
-              borderWidth: 1
-            }}></Text>
-          </View> */}
+        
         </View>
       </TouchableWithoutFeedback>
     </Animated.View>
@@ -110,11 +93,11 @@ const styles = StyleSheet.create({
   item: {
     margin: 10,
   },
-  itemPhoto: {
-    width: 140,
-    height: 160,
-    borderRadius: 12,
-  },
+  // itemPhoto: {
+  //   width: 140,
+  //   height: 160,
+  //   borderRadius: 12,
+  // },
   itemText: {
     color: "#ffffff",
     marginTop: 5,

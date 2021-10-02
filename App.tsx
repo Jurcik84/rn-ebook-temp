@@ -1,54 +1,64 @@
 import "react-native-gesture-handler";
 import * as React from "react";
-import { Linking, Platform, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import StackApp from "./app/app-page-manager/view";
+import { StatusBar, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const PERSISTENCE_KEY = "NAVIGATION_STATE";
-function App() {
-  const [isReady, setIsReady] = React.useState(false);
-  const [initialState, setInitialState] = React.useState();
+// root nav stack
+// type : stack
+import StackApp from "./app/app-page-manager/view";
 
-  React.useEffect(() => {
-    const restoreState = async () => {
-      try {
-        const initialUrl = await Linking.getInitialURL();
-        // Platform.OS !== "web" && initialUrl == null
-        if (true) {
-          // Only restore state if there's no deep link and we're not on web
-          const savedStateString = await AsyncStorage.getItem(PERSISTENCE_KEY);
-          const state = savedStateString
-            ? JSON.parse(savedStateString)
-            : undefined;
+import AppLab from "./AppLab/view";
 
-          if (state !== undefined) {
-            setInitialState(state);
-          }
-        }
-      } finally {
-        setIsReady(true);
-      }
-    };
+//
+import {
+  useStorageToSaveNavState,
+  storeStateToStorage,
+} from "./app/app-services/service-nav-state-manager";
 
-    if (!isReady) {
-      restoreState();
-    }
-  }, [isReady]);
+//
+const MainNavTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "#ffffff",
+  },
+};
 
+const App = function () {
+  // task : store nav state and idicate when is ready
+  //
+  const { isReady, initNavState } = useStorageToSaveNavState();
+  //
   if (!isReady) {
+    //
     return null;
   }
   return (
     <NavigationContainer
-      initialState={initialState}
-      onStateChange={(state) =>
-        AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state))
-      }
+      theme={MainNavTheme}
+      initialState={initNavState || undefined}
+      onStateChange={(state) => {
+        typeof storeStateToStorage === "function" && storeStateToStorage(state);
+      }}
     >
       <StackApp />
     </NavigationContainer>
   );
-}
+};
 
-export default App;
+export default () => {
+  return (
+    <SafeAreaView style={[styles.container]}>
+      <StatusBar style="light" />
+      <AppLab />
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
