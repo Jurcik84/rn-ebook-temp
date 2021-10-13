@@ -1,7 +1,6 @@
 import "react-native-gesture-handler";
-import * as React from "react";
+import  React from "react";
 import { StatusBar, StyleSheet } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -52,7 +51,7 @@ export default () => {
   return (
     <SafeAreaView style={[styles.container]}>
       <StatusBar style="light" />
-      <AppLab />
+      <App />
     </SafeAreaView>
   );
 };

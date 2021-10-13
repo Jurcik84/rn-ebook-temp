@@ -1,11 +1,13 @@
 import React from "react";
+import { Platform } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 
 // import Screens
-import ListScreen from "../page-tutorial-list/view";
-import DetailScreen from "../page-tutorial-detail/view";
+import ListScreen from "../page-tut-list/view";
+import DetailScreen from "../page-tut-detail/view";
 
 // tab
 import ScreenFinishedTuts from "../page-finished-tuts/view";
@@ -14,7 +16,7 @@ import FullScreenModalView from "../page-full-modal/view";
 
 // ctx
 // import useScreenCtx from "./ctx-controller";
-
+const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -93,15 +95,35 @@ const TabNavigation = ({}) => {
   );
 };
 
-export default ({}) => {
+const DrawerNav = () => {
   return (
-    <Stack.Navigator screenOptions={{
-    }}>
+    <Drawer.Navigator>
+      {tab_config.map(({ comp, name, options }, tabConfigIndex) => {
+        return (
+          <Drawer.Screen
+            key={tabConfigIndex.toString()}
+            name={name}
+            component={comp}
+          />
+        );
+      })}
+    </Drawer.Navigator>
+  );
+};
+
+
+
+const renderTabOrDrawer = Platform.OS === "ios" ? TabNavigation : DrawerNav
+
+
+const RootView = ({}) => {
+  return (
+    <Stack.Navigator screenOptions={{}}>
       <Stack.Group>
         <Stack.Screen
           options={{ headerShown: false }}
           name="HomeTutorialList"
-          component={TabNavigation}
+          component={renderTabOrDrawer}
         />
       </Stack.Group>
       <Stack.Group screenOptions={{ presentation: "card" }}>
@@ -133,3 +155,6 @@ export default ({}) => {
     </Stack.Navigator>
   );
 };
+
+
+export default RootView

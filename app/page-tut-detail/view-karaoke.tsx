@@ -2,6 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View, Animated, Dimensions } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
+const generateUniqKeyForList = function (item, index) {
+  return item + index.toString();
+};
 
 // https://medium.com/nerd-for-tech/react-native-styles-normalization-e8ce77a3110c
 // later implement
@@ -21,29 +24,27 @@ const data2 =
     .split(" ");
 
 const useEffectCb = function ({ animRef = {}, index = 0 }) {
-  return function () {
-    // - simulation of delay
-    // later implemented by 
-    // timestamp from audio
-    // https://cloud.google.com/speech-to-text/docs/async-time-offsets#speech_transcribe_async_word_time_offsets_gcs-nodejs
-    // google sevice can extract
-    // timestamp from audio by nodejs
-    const _delay = index * 1000;
-    //
+  // - simulation of delay
+  // later implemented by
+  // timestamp from audio
+  // https://cloud.google.com/speech-to-text/docs/async-time-offsets#speech_transcribe_async_word_time_offsets_gcs-nodejs
+  // google sevice can extract
+  // timestamp from audio by nodejs
+  const _delay = index * 1000;
+  //
+  Animated.timing(animRef?.current, {
+    toValue: 0.6,
+    duration: 500,
+    delay: _delay,
+    useNativeDriver: true,
+  }).start(() => {
     Animated.timing(animRef?.current, {
-      toValue: 0.6,
+      toValue: 1,
       duration: 500,
-      delay: _delay,
+      delay: 0,
       useNativeDriver: true,
-    }).start(() => {
-      Animated.timing(animRef?.current, {
-        toValue: 1,
-        duration: 500,
-        delay: 0,
-        useNativeDriver: true,
-      }).start();
-    });
-  };
+    }).start();
+  });
 };
 
 // user -action
@@ -62,7 +63,7 @@ const onPressPlayFromPressedWord = function ({} = {}) {
   // implement
 };
 
-const AnimatedText = function ({ index = 0, item = "" }) {
+const AnimatedTextView = function ({ index = 0, item = "" }) {
   //
   const animRef = React.useRef(new Animated.Value(1));
   //
@@ -71,7 +72,7 @@ const AnimatedText = function ({ index = 0, item = "" }) {
   const _onPressPlayFromPressedWord = onPressPlayFromPressedWord;
 
   //
-  React.useEffect(useEffectCb({ animRef, index }), []);
+  React.useEffect(() => useEffectCb({ animRef, index }), []);
 
   return (
     <TouchableOpacity
@@ -106,12 +107,12 @@ const KaraokeView = ({}) => {
   return (
     <FlatList
       bounces={false}
-      keyExtractor={(item, index) => item + index.toString()}
-      numColumns={4}
+      keyExtractor={generateUniqKeyForList}
+      numColumns={3}
       data={data1}
       renderItem={({ item, index }) => {
         return (
-          <AnimatedText item={item} key={index.toString()} index={index} />
+          <AnimatedTextView item={item} key={index.toString()} index={index} />
         );
       }}
     />

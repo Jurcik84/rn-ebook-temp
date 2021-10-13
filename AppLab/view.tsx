@@ -2,9 +2,7 @@ import * as React from "react";
 import {
   View,
   StyleSheet,
-  Button,
   Text,
-  Dimensions,
   Animated,
   ScrollView,
 } from "react-native";
@@ -15,7 +13,7 @@ const data_string =
 
 const data_array = data_string.split("").concat(data_string.split(""),data_string.split(""));
 
-// r
+// 
 
 const useEffectCb = function ({ animRef = {}, index = 0 }) {
   return () => {
@@ -60,15 +58,11 @@ const AnimatedText = function ({ index = 0 }) {
 };
 
 const SomeView: React.FunctionComponent<{}> = ({}) => {
-  const SliderRef = React.useRef<Slider>();
   const ScrollViewRef = React.useRef<ScrollView>();
   const [sliderValue, setSliderValue] = React.useState<number>(0);
   const [scrollValue, setScrollValue] = React.useState<number>(0);
 
-  const setSliderValByScrollH = function (height: number) {
-    SliderRef?.current?.setNativeProps({ value: height });
-    setSliderValue(height);
-  };
+  
 
   // when user use slider
   // content is scrolled
