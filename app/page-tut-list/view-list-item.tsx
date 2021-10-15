@@ -1,10 +1,27 @@
 import React from "react";
-import { StyleSheet, View, Image, SafeAreaView, Animated } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  SafeAreaView,
+  Animated,
+  Dimensions,
+} from "react-native";
 import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
 import { Text, Block } from "galio-framework";
+
+
+// TEMPORATY FOR TESTING
+// NEED TO FIX THE SCALEING ON DIFFERENT SCREENS
+
+const { width, height } = Dimensions.get("window");
+
+const guidelineBaseWidth = 350;
+const guidelineBaseHeight = 680;
+const scale = (size: number): number => (width / guidelineBaseWidth) * size;
 
 const ListItem = ({
   item = {},
@@ -40,14 +57,13 @@ const ListItem = ({
       <TouchableWithoutFeedback onPress={scaleDowWhenPressed}>
         <View
           style={{
-            width: 148,
-            height: 216,
+            width: scale(148),
+            height: scale(216),
             marginRight: 12,
             borderRadius: 12,
-            borderColor: '#ccc',
-           borderWidth: 1,
-           marginBottom: 35
-          
+            borderColor: "#ccc",
+            borderWidth: 1,
+            marginBottom: 35,
           }}
         >
           <View
@@ -73,7 +89,6 @@ const ListItem = ({
             </Text>
             <Text style={[styles.itemText]} p></Text>
           </View>
-        
         </View>
       </TouchableWithoutFeedback>
     </Animated.View>

@@ -5134,6 +5134,11 @@ react-native-size-matters@^0.3.1:
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz#24d0cfc335a2c730f6d58bd7b43ea5a41be4b49f"
   integrity sha512-mKOfBLIBFBcs9br1rlZDvxD5+mAl8Gfr5CounwJtxI6Z82rGrMO+Kgl9EIg3RMVf3G855a85YVqHJL2f5EDRlw==
 
+react-native-viewport-units@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-viewport-units/-/react-native-viewport-units-0.0.5.tgz#c86448ca6497e49a9255a48589f1609d6b73f503"
+  integrity sha1-yGRIymSX5JqSVaSFifFgnWtz9QM=
+
 react-native-web@~0.13.12:
   version "0.13.18"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.13.18.tgz"

@@ -60,7 +60,9 @@ const ListView: React.ReactNode = function ({ navigation }) {
     stickySectionHeadersEnabled: false,
     //
     sections: SECTIONS,
+    //
     showsHorizontalScrollIndicator: false,
+    //
     showsVerticalScrollIndicator: false,
   };
   return (

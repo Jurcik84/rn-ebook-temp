@@ -44,7 +44,7 @@ const DictionaryConfig = {
 };
 const tab_config = [HomePageConfig, FinishPageConfig, DictionaryConfig];
 
-const TabNavigation = ({}) => {
+const TabNavigation = function ({}) {
   // tested OK
   // const ctx = useScreenCtx();
   // console.log("ctx", ctx);
@@ -95,7 +95,7 @@ const TabNavigation = ({}) => {
   );
 };
 
-const DrawerNav = () => {
+const DrawerNav = function ({}) {
   return (
     <Drawer.Navigator>
       {tab_config.map(({ comp, name, options }, tabConfigIndex) => {
@@ -111,12 +111,9 @@ const DrawerNav = () => {
   );
 };
 
+const renderTabOrDrawer = Platform.OS === "ios" ? TabNavigation : DrawerNav;
 
-
-const renderTabOrDrawer = Platform.OS === "ios" ? TabNavigation : DrawerNav
-
-
-const RootView = ({}) => {
+const RootView = function({}){
   return (
     <Stack.Navigator screenOptions={{}}>
       <Stack.Group>
@@ -156,5 +153,9 @@ const RootView = ({}) => {
   );
 };
 
+export default RootView;
 
-export default RootView
+
+
+// 
+// https://medium.com/soluto-engineering/size-matters-5aeeb462900a
