@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, FlatList, View, StyleSheet } from "react-native";
+import { FlatList, View, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 // sub views
 import CardListitemView from "./view-list-card";
-import { HStack, VStack } from "./elements";
+import { HStack, VStack, Text, Center } from "./elements";
 // types
 import type { SectionsType } from "./types";
 
@@ -54,7 +54,12 @@ const SectionHeaderView: React.FunctionComponent<{}> = function ({
       <HStack>
         {title_header_left_text}
         {title_header_right_text_pressable}
+
       </HStack>
+      <Center>
+          <Text h1>cat</Text>
+          <Text>cat</Text>
+      </Center>
       <FlatList
         // props
         {...list_view_props}

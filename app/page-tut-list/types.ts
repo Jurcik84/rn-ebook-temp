@@ -25,5 +25,5 @@ type BasicViewProps = {
   //
   w: number;
   h: number;
-
+  
 };
