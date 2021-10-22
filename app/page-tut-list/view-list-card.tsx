@@ -1,18 +1,7 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Image,
-  SafeAreaView,
-  Animated,
-  Dimensions,
-} from "react-native";
-import {
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
-import { Text, Block } from "galio-framework";
-
+import { StyleSheet, View, Animated, Dimensions } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Text } from "galio-framework";
 
 // TEMPORATY FOR TESTING
 // NEED TO FIX THE SCALEING ON DIFFERENT SCREENS

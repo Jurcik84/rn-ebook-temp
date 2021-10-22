@@ -1,53 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, SectionList, FlatList, View } from "react-native";
-import ListItem from "./view-list-item";
+import { StyleSheet, Text, SectionList } from "react-native";
+
 
 import SECTIONS from "./state-init";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
+// sub views
+import SectionHeaderView from "./view-section-header";
+
+// type
+import type { SectionsType } from "./types";
 
 const NAVIGATION_NAVIGATE_TO = "DetailScreen";
 
-const renderSectionHeader = function ({ section, navigation }) {
-  //
-  const listProps = {
-    showsHorizontalScrollIndicator: false,
-    horizontal: true,
-    data: section.data,
-  };
-
-  return (
-    <View>
-      <View style={[]}>
-        <Text style={[styles.sectionHeader]}>Super big title</Text>
-      </View>
-      <View style={[styles.hstack]}>
-        <Text style={[styles.subtitleOnLeft]}>Left title</Text>
-        <TouchableOpacity>
-          <View style={[styles.ovalTitleOnRight]}>
-            <Text>See all</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View style={[]}>
-        <FlatList
-          // props
-          {...listProps}
-          // methods
-          renderItem={({ item }) => (
-            <ListItem
-              item={item}
-              onPress={() =>
-                navigation &&
-                navigation.navigate &&
-                navigation?.navigate(NAVIGATION_NAVIGATE_TO)
-              }
-            />
-          )}
-        />
-      </View>
-    </View>
-  );
-};
 
 const ListView: React.ReactNode = function ({ navigation }) {
   //
@@ -69,7 +33,7 @@ const ListView: React.ReactNode = function ({ navigation }) {
     <SectionList
       {...sectionListProps}
       renderSectionHeader={({ section }) =>
-        renderSectionHeader({ section, navigation })
+      SectionHeaderView({ section, navigation })
       }
       renderItem={({ item, section }) => {
         return null;

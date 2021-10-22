@@ -1,15 +1,15 @@
 import "react-native-gesture-handler";
-import  React from "react";
+import React from "react";
 import { StatusBar, StyleSheet } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import { NativeBaseProvider, Box } from "native-base";
 // root nav stack
 // type : stack
+
 import StackApp from "./app/app-page-manager/view";
 
 import AppLab from "./AppLab/view";
-
 //
 import {
   useStorageToSaveNavState,
@@ -49,10 +49,12 @@ const App = function () {
 
 export default () => {
   return (
-    <SafeAreaView style={[styles.container]}>
-      <StatusBar style="light" />
-      <App />
-    </SafeAreaView>
+    <NativeBaseProvider>
+      <SafeAreaView style={[styles.container]}>
+        <StatusBar style="light" />
+        <App />
+      </SafeAreaView>
+    </NativeBaseProvider>
   );
 };
 
