@@ -8,6 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 // import Screens
 import ListScreen from "../page-tut-list/view";
 import DetailScreen from "../page-tut-detail/view";
+import PageCardAsListView from "../page-tut-list/view-seel-all";
 
 // tab
 import ScreenFinishedTuts from "../page-finished-tuts/view";
@@ -113,7 +114,7 @@ const DrawerNav = function ({}) {
 
 const renderTabOrDrawer = Platform.OS === "ios" ? TabNavigation : DrawerNav;
 
-const RootView = function({}){
+const RootView = function ({}) {
   return (
     <Stack.Navigator screenOptions={{}}>
       <Stack.Group>
@@ -148,6 +149,18 @@ const RootView = function({}){
           name="FullScreenModalView"
           component={FullScreenModalView}
         />
+        <Stack.Screen
+          options={{
+            headerShown: true,
+            title: "PageCardAsListView",
+            headerStyle: {
+              // backgroundColor: "transparent",
+            },
+            // headerTintColor: "red",
+          }}
+          name="PageCardAsListView"
+          component={PageCardAsListView}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -155,7 +168,5 @@ const RootView = function({}){
 
 export default RootView;
 
-
-
-// 
+//
 // https://medium.com/soluto-engineering/size-matters-5aeeb462900a

@@ -1,5 +1,3 @@
-
-
 // HOME PAGE DATA TYPE
 
 export type SectionsType = {
@@ -12,3 +10,20 @@ export type SectionsType = {
   }[];
 };
 
+type BasicViewProps = {
+  m: number;
+  mt: number;
+  mb: number;
+  ml: number;
+  mr: number;
+  //
+  p: number;
+  pt: number;
+  pb: number;
+  pr: number;
+  pl: number;
+  //
+  w: number;
+  h: number;
+
+};

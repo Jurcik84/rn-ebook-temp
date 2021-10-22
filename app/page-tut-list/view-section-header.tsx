@@ -4,6 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 // sub views
 import CardListitemView from "./view-list-card";
+import { HStack, VStack } from "./elements";
 // types
 import type { SectionsType } from "./types";
 
@@ -36,7 +37,9 @@ const SectionHeaderView: React.FunctionComponent<{}> = function ({
 
   // sub view ----------------------------------------------------
   const title_header_right_text_pressable = (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigation?.navigate("PageCardAsListView")}
+    >
       <View style={[styles.ovalTitleOnRight]}>
         <Text>See all</Text>
       </View>
@@ -46,30 +49,28 @@ const SectionHeaderView: React.FunctionComponent<{}> = function ({
   // main view  ----------------------------------------------------
 
   return (
-    <View>
+    <VStack>
       {main_header_text}
-      <View style={[styles.hstack]}>
+      <HStack>
         {title_header_left_text}
         {title_header_right_text_pressable}
-      </View>
-      <View style={[]}>
-        <FlatList
-          // props
-          {...list_view_props}
-          // methods
-          renderItem={({ item }) => (
-            <CardListitemView
-              item={item}
-              onPress={() =>
-                navigation &&
-                navigation?.navigate &&
-                navigation?.navigate(NAVIGATION_NAVIGATE_TO)
-              }
-            />
-          )}
-        />
-      </View>
-    </View>
+      </HStack>
+      <FlatList
+        // props
+        {...list_view_props}
+        // methods
+        renderItem={({ item }) => (
+          <CardListitemView
+            item={item}
+            onPress={() =>
+              navigation &&
+              navigation?.navigate &&
+              navigation?.navigate(NAVIGATION_NAVIGATE_TO)
+            }
+          />
+        )}
+      />
+    </VStack>
   );
 };
 
@@ -93,7 +94,6 @@ const styles = StyleSheet.create({
     width: 127,
     height: 34,
     borderRadius: 20,
-    marginRight: 12,
     marginBottom: 12,
     alignItems: "center",
     justifyContent: "center",

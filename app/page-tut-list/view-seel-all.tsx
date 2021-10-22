@@ -23,30 +23,19 @@ import SECTIONS from "./state-init";
 
 const NAVIGATION_NAVIGATE_TO = "DetailScreen";
 
-const ListView: React.ReactNode = function ({ navigation }) {
+const PageCardAsListView: React.FunctionComponent<{}> = function ({
+  navigation,
+}) {
   //
 
   return (
     <View>
       <Text>Seel all in vertical slignemnt</Text>
+      <TouchableOpacity onPress={() => navigation.pop()}>
+        <Text>go back</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
-export default ListView;
-
-// <View
-// style={{
-//   backgroundColor: "#ccc",
-// }}
-// >
-// <Text style={styles?.sectionHeader}>{section.title}</Text>
-// <View style={[styles?.ovalTitleOnRight]}>
-//   <Text style={[styles?.subtitleOnLeft]}>title</Text>
-// </View>
-// <View>
-//   {section.horizontal ? (
-//     <HorizontalListView navigation={navigation} section={section} />
-//   ) : null}
-// </View>
-// </View>
+export default PageCardAsListView;
