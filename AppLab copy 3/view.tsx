@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 interface ContainerProps {
   HeaderView: any;
@@ -7,13 +7,16 @@ interface ContainerProps {
   FooterView: any;
 }
 
-type ShareTimeOptions = 15 | 1 | 8;
 const ContainerView: React.FunctionComponent<ContainerProps> = function ({}) {
   return <View></View>;
 };
 
 const HeaderView = function ({}) {
-  return null
+  return <View style={{
+    flex:1
+  }}>
+    <Text>Ahoj</Text>
+  </View>
 };
 
 const MapView = function ({}) {
@@ -25,16 +28,9 @@ const FooterView = function ({}) {
 };
 
 export default () => {
-  const [duration, setDuration] = React.useState<ShareTimeOptions>(1);
-  const [comment, setComment] = React.useState<string>();
-  const submitShareLiveLocaton = () => {};
 
   return (
-    <ContainerView
-      HeaderView={() => <HeaderView />}
-      MapView={() => <MapView />}
-      FooterView={() => <FooterView />}
-    />
+    null
   );
 };
 

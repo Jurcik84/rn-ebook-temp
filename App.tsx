@@ -6,10 +6,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { NativeBaseProvider, Box } from "native-base";
 // root nav stack
 // type : stack
-
-import StackApp from "./app/app-page-manager/view";
+// import StackApp from "./app/app-page-manager/view";
+// Test
+import MikoTest from './miko-test/view'
 
 import AppLab from "./AppLab/view";
+import MainView from './app/app-page-manager/view'
 //
 import {
   useStorageToSaveNavState,
@@ -26,8 +28,6 @@ const MainNavTheme = {
 };
 
 const App = function () {
-  // task : store nav state and idicate when is ready
-  //
   const { isReady, initNavState } = useStorageToSaveNavState();
   //
   if (!isReady) {
@@ -42,7 +42,7 @@ const App = function () {
         typeof storeStateToStorage === "function" && storeStateToStorage(state);
       }}
     >
-      <StackApp />
+      <MainView />
     </NavigationContainer>
   );
 };
@@ -63,3 +63,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+
+// PLANNING FEATURES
+// LINKING ROM APP TO APP
+// OFFER TO SHARE
+
+// WHY APP ?
+// BETTER BUSSINESS
+// 
