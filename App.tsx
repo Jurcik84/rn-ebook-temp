@@ -1,11 +1,17 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StatusBar, StyleSheet, View , Text, Button} from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NativeBaseProvider, Box } from "native-base";
+import {View, TextField, Text, Button} from 'react-native-ui-lib';
 import { Provider, useSelector, useDispatch } from "react-redux";
-import { selectTodos, addTodo, removeTodo } from "./app/app-store/store";
+import {
+  selectTodos,
+  addTodo,
+  removeTodo,
+  getPosts,
+} from "./app/app-store/store";
 
 import MikoTest from "./miko-test/view";
 
@@ -50,38 +56,25 @@ const App = function () {
 };
 
 const TestComp = function () {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const todos = useSelector(selectTodos);
 
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
-      {todos.map((todo,index)=>{
-        return  <View key={index.toString()}>
-          <Text key={index.toString()}>{todo.text + index}</Text>
-          <Button title="remove" onPress={()=>dispatch(removeTodo(index))} />
-        </View>
-      })}
-      <Button title="add" onPress={()=> dispatch(addTodo("Juraj"))} />
-    </View>
-  );
+  React.useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
+  return null;
 };
 
 export default () => {
   return (
     <Provider store={store}>
-      {/* <NativeBaseProvider>
+      <NativeBaseProvider>
         <SafeAreaView style={[styles.container]}>
           <StatusBar style="light" />
           <App />
         </SafeAreaView>
-      </NativeBaseProvider> */}
-      <TestComp />
+      </NativeBaseProvider>
     </Provider>
   );
 };

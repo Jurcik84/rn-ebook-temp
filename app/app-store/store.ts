@@ -1,4 +1,9 @@
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  createSlice,
+  PayloadAction,
+  createAsyncThunk,
+} from "@reduxjs/toolkit";
 
 interface Todo {
   id: number;
@@ -8,15 +13,38 @@ interface Todo {
 
 interface TodosSliceState {
   todos: Todo[];
+  status: any;
+  list: [];
 }
 
 const initialState: TodosSliceState = {
   todos: [],
+  status: null,
+  list: [],
 };
+
+export const getPosts = createAsyncThunk("posts/getPosts", async (): Promise<any> => {
+  return fetch("https://jsonplaceholder.typicode.com/todos/").then((res) =>
+    res.json()
+  );
+});
 
 export const todoSlice = createSlice({
   name: "todo",
   initialState: initialState,
+  extraReducers: {
+    [getPosts.pending.toString()]: (state, action) => {
+      state.status = "loading";
+    },
+    [getPosts.fulfilled.toString()]: (state, action) => {
+        console.log('data', action.payload)
+      state.list = action.payload;
+      state.status = "success";
+    },
+    [getPosts.rejected.toString()]: (state, action) => {
+      state.status = "failed";
+    },
+  },
   reducers: {
     ["addTodo"]: (state: TodosSliceState, action: PayloadAction<string>) => {
       state.todos = [
@@ -43,7 +71,8 @@ const store = configureStore({
 
 export const { addTodo, removeTodo, replaceTodo } = todoSlice.actions;
 
-type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export const selectTodos = (state: RootState) => state.todos.todos;
 
